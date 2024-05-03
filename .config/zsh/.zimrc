@@ -1,0 +1,22 @@
+zmodule environment
+zmodule git
+zmodule git-info
+zmodule input
+zmodule termtitle
+zmodule utility
+zmodule fzf
+zmodule exa
+zmodule utility
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+
+# Theme
+zmodule prompt-pwd
+# zmodule eriner
+zmodule spaceship-prompt/spaceship-prompt --source spaceship.zsh --no-submodules
+
+# Modules that must be initialized last
+zmodule zdharma-continuum/fast-syntax-highlighting --source fast-syntax-highlighting.plugin.zsh
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
+

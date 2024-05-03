@@ -1,0 +1,115 @@
+snippets:
+  # git
+  - name: git
+    keyword: g
+    snippet: git
+
+  - name: git status
+    keyword: gs
+    snippet: git status --short --branch
+
+  - name: git branch
+    keyword: b
+    snippet: branch
+    context:
+      lbuffer: "^git\\s"
+
+  - name: git switch
+    keyword: sw
+    snippet: switch
+    context:
+      lbuffer: "^git\\s"
+
+  - name: git push
+    keyword: gpsh
+    snippet: git push
+
+  - name: git pull
+    keyword: gpl
+    snippet: git pull
+
+  - name: git commit message
+    keyword: gcim
+    snippet: git commit -m '{{commit_message}}'
+
+  # dockers
+  - name: docker
+    keyword: d
+    snippet: docker
+
+  - name: docker compose
+    keyword: c
+    snippet: compose
+    context:
+      lbuffer: "^docker\\s"
+
+  - name: docker compose up -d
+    keyword: dcu
+    snippet: docker compose up -d
+
+  - name: docker compose down
+    keyword: dcd
+    snippet: docker compose down
+
+  - name: docker compose
+    keyword: cn
+    snippet: container
+    context:
+      lbuffer: "^docker\\s"
+
+  - name: docker container ls -a
+    keyword: dcla
+    snippet: docker container ls -a
+
+  - name: docker container prune
+    keyword: dcp
+    snippet: docker container prune -f
+
+  # the others
+  - name: home
+    keyword: tld
+    snippet: $HOME/{{commit_message}}
+    context:
+      lbuffer: '.+\s'
+
+  - name: "null"
+    keyword: "null"
+    snippet: ">/dev/null 2>&1"
+    # auto expand condition
+    # If not defined, it is only valid at the beginning of a line.
+    context:
+      # buffer: ''
+      lbuffer: '.+\s'
+      # rbuffer: ''
+
+completions:
+  - name: kill signal
+    patterns:
+      - "^kill -s $"
+    sourceCommand: "kill -l | tr ' ' '\\n'"
+    options:
+      --prompt: "'Kill Signal> '"
+
+  - name: kill pid
+    patterns:
+      - "^kill( .*)? $"
+    excludePatterns:
+      # -l, -n or -s is followed by SIGNAL instead of PID
+      - " -[lns] $"
+    sourceCommand: "LANG=C ps -ef | sed 1d"
+    options:
+      --multi: true
+      --prompt: "'Kill Process> '"
+    callback: "awk '{print $2}'"
+
+  - name: chdir
+    patterns:
+      - "^cd $"
+    sourceCommand: "find . -path '*/.git' -prune -o -maxdepth 5 -type d -print0"
+    options:
+      # Added --read0 if null termination is used in `sourceCommand` output.
+      --read0: true
+      --prompt: "'Chdir> '"
+      --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
+    callback: "cut -z -c 3-"
+    callbackZero: true  # null termination is used in `callback` I/O

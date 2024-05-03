@@ -1,0 +1,28 @@
+## all ignore
+/*
+/.**
+
+!*/
+## white list
+!/install.sh
+!/.zshenv
+!/.gitignore
+!/README.md
+!/LICENSE
+!/.github/**
+!/.config/
+!/.config/alacritty/alacritty.toml
+!/.config/alacritty/themes/themes/tokyo-night-storm.toml
+!/.config/nvim/
+!/.config/nvim/**
+!/.config/vim/
+!/.config/vim/.vimrc
+!/.config/zsh/
+!/.config/zsh/**
+!/.config/zellij/
+!/.config/zellij/**
+!/.config/zeno/**
+/.config/zsh/.zcomp*
+/.config/zsh/*history
+/.config/zsh/.zim/
+/.config/zsh/.zshenv.local
