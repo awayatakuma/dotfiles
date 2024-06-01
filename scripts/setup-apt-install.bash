@@ -3,7 +3,7 @@ set -eux
 
 # apts
 apt-get install -y software-properties-common
-add-apt-repository -y ppa:git-core/ppa
+add-apt-repository -y ppa:git-core/ppa ppa:longsleep/golang-backports
 apt-get update
 apt-get upgrade -y
 apt-get install -y \

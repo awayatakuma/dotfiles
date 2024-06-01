@@ -12,6 +12,11 @@ if ! type lazygit >/dev/null 2>&1; then
 	sudo rm -rf /tmp/lazygit
 fi
 
+# lazydocker
+
+go install github.com/jesseduffield/lazydocker@latest
+sudo mv ${GOPATH}/bin/lazydocker /usr/local/bin
+
 # nvim
 if ! type nvim >/dev/null 2>&1; then
 	sudo mkdir -p /tmp/nvim
