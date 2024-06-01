@@ -1,0 +1,127 @@
+// My keybinding settings are owed to Kamino410 san
+// https://kamino.hatenablog.com/entry/vscode_alike_neovim
+
+[
+    { 
+        "key": "ctrl+q",
+        "command": "workbench.action.toggleMaximizedPanel" 
+    },
+    {
+        "key": "ctrl+l",
+        "command": "workbench.action.nextEditor",
+        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "workbench.action.previousEditor",
+        "when": "!terminalFocus && !sideBarFocus && vim.mode != 'Insert'"
+    },
+        // explorer: toggle
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "workbench.explorer.fileView.focus",
+        "when": "!filesExplorerFocus"
+    },
+    {
+        "key": "ctrl+k ctrl+s",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "filesExplorerFocus"
+    },
+    // explorer: open
+    {
+        "key": "Enter",
+        "command": "macros.selectAndToggleSidebar",
+        "when": "explorerViewletFocus && explorerViewletVisible && !explorerResourceIsFolder && !inputFocus"
+    },
+    {
+        "key": "t",
+        "command": "macros.selectAndToggleSidebar",
+        "when": "explorerViewletFocus && explorerViewletVisible && !explorerResourceIsFolder && !inputFocus"
+    },
+    // explorer: move
+    {
+        "key": "Enter",
+        "command": "list.toggleExpand",
+        "when": "explorerViewletFocus && explorerViewletVisible && explorerResourceIsFolder && !inputFocus"
+    },
+    // explorer: rename
+    {
+        "key": "m r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // explorer: copy
+    {
+        "key": "m c",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // explorer: paste
+    {
+        "key": "m p",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // explorer: new file
+    {
+        "key": "m a",
+        "command": "explorer.newFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // explorer: delete file
+    {
+        "key": "m d",
+        "command": "deleteFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    // explorer: new folder
+    {
+        "key": "m f",
+        "command": "explorer.newFolder",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+        // panel(bottombar): toggle
+    {
+        "key": "ctrl+j ctrl+j",
+        "command": "workbench.action.togglePanel"
+    },
+    // panel(bottombar): focus
+    {
+        "key": "ctrl+j ctrl+t",
+        "command": "workbench.panel.terminal.focus"
+    },
+    {
+        "key": "ctrl+j ctrl+d",
+        "command": "workbench.debug.action.focusRepl"
+    },
+    {
+        "key": "ctrl+j ctrl+o",
+        "command": "workbench.panel.output.focus"
+    },
+    {
+        "key": "ctrl+j ctrl+p",
+        "command": "workbench.panel.markers.view.focus"
+    },
+    // terminal: new
+    {
+        "key": "ctrl+j ctrl+n",
+        "command": "workbench.action.terminal.new"
+    },
+    // terminal: move
+    {
+        "key": "ctrl+j ctrl+l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+j ctrl+h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    // terminal: kill
+    {
+        "key": "ctrl+j ctrl+w",
+        "command": "workbench.action.terminal.kill",
+        "when": "terminalFocus"
+    },
+]
