@@ -37,7 +37,8 @@ apt-get install -y \
 	gpg \
 	bat \
 	fd-find \
-	xsel
+	xsel \
+	neofetch 
 
 apt remove neovim
 # Docker

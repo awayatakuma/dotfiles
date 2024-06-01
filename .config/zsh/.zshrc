@@ -7,3 +7,5 @@ source "$ZDOTDIR/zeno.setting.zsh"
 if [ -f "$ZDOTDIR/.zshenv.local" ]; then
     source "$ZDOTDIR/.zshenv.local"
 fi
+
+neofetch
