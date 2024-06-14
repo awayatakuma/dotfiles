@@ -101,7 +101,7 @@
       "workbench.action.toggleSidebarVisibility"
     ]
   },
-  "workbench.colorTheme": "Monokai Pro (Filter Spectrum)",
+  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "editor.fontFamily": "HackGen,  'Courier New', monospace",
+  "editor.fontFamily": "HackGen Console NF,  'Courier New', monospace",
 }
