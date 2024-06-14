@@ -61,3 +61,5 @@ path=(
     "$FZF_HOME/bin"(N-/)
     "$path[@]"
 )
+
+source "${CARGO_HOME}/env

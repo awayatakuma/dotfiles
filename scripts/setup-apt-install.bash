@@ -3,42 +3,51 @@ set -eux
 
 # apts
 apt-get install -y software-properties-common
-add-apt-repository -y ppa:git-core/ppa ppa:longsleep/golang-backports
+add-apt-repository -y ppa:git-core/ppa
+add-apt-repository -y ppa:longsleep/golang-backports
 apt-get update
 apt-get upgrade -y
 apt-get install -y \
 	autoconf \
+	bat \
 	build-essential \
 	clang \
-	clangd \
 	clang-format \
+	clangd \
 	cmake \
 	curl \
+	fd-find \
+	gcc \
 	git \
 	git-lfs \
 	gpg \
 	jq \
+	libasound2-dev \
+	libexpat1-dev \
+	libfontconfig1-dev \
+	libfreetype6-dev \
 	libfuse-dev \
 	libsqlite3-dev \
 	libssl-dev \
+	libx11-dev \
+	libxcb-composite0-dev \
 	lldb \
+	neofetch  \
+	openssl \
+	pkg-config \
 	python3 \
 	python3-pip \
 	python3-pynvim \
+	ripgrep \
 	shellcheck \
 	sqlite3 \
 	tmux \
 	trash-cli \
 	unzip \
 	wget \
-	zip \
-	zsh \
-	ripgrep \
-	gpg \
-	bat \
-	fd-find \
 	xsel \
-	neofetch 
+	zip \
+	zsh
 
 apt remove neovim
 # Docker
