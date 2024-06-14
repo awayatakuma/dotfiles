@@ -31,4 +31,4 @@
 /.config/zsh/.zcomp*
 /.config/zsh/*history
 /.config/zsh/.zim/
-/.config/zsh/.zshenv.local
+/.config/zsh/zshenv.local
