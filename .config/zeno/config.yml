@@ -72,6 +72,18 @@ snippets:
     context:
       lbuffer: '.+\s'
 
+  - name: cdk deploy
+    keyword: de
+    snippet: deploy
+    context:
+      lbuffer: '^cdk+\s'
+
+  - name: cdk destroy
+    keyword: des
+    snippet: destroy
+    context:
+      lbuffer: '^cdk+\s'
+
   - name: "null"
     keyword: "null"
     snippet: ">/dev/null 2>&1"
@@ -113,3 +125,30 @@ completions:
       --preview: "cd {} && ls -a | sed '/^[.]*$/d'"
     callback: "cut -z -c 3-"
     callbackZero: true  # null termination is used in `callback` I/O
+
+  - name: roscd
+    patterns:
+      - "^roscd( .*)? $"
+    sourceCommand: "LANG=C rospack list-names"
+    options:
+      --multi: true
+      --prompt: "'roscd> '"
+    callback: "awk '{print $1}'"
+
+  - name: rosrun
+    patterns:
+      - "^rosrun( [! ]*)? $"
+    sourceCommand: "LANG=C rospack list-names"
+    options:
+      --multi: true
+      --prompt: "'rosrun> '"
+    callback: "awk '{print $1}'"
+
+  - name: roslaunch
+    patterns:
+      - "^roslaunch( [! ]*)? $"
+    sourceCommand: "LANG=C rospack list-names"
+    options:
+      --multi: true
+      --prompt: "'roslaunch> '"
+    callback: "awk '{print $1}'"

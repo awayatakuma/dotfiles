@@ -1,10 +1,10 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
-keybinds clear-defaults=true{
+keybinds clear-defaults=true {
     normal {
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
-    locked {
+    locked clear-defaults=true {
         bind "Ctrl g" { SwitchToMode "Normal"; }
     }
     resize {
@@ -121,7 +121,7 @@ keybinds clear-defaults=true{
             SwitchToMode "Normal"
         }
     }
-   // tmux {
+   tmux clear-defaults=true {
    //     bind "[" { SwitchToMode "Scroll"; }
    //     bind "CCtrl btrl b" { Write 2; SwitchToMode "Normal"; }
    //     bind "\"" { NewPane "Down"; SwitchToMode "Normal"; }
@@ -143,7 +143,7 @@ keybinds clear-defaults=true{
    //     bind "d" { Detach; }
    //     bind "Space" { NextSwapLayout; }
    //     bind "x" { CloseFocus; SwitchToMode "Normal"; }
-   // }
+   }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
         bind "Ctrl q" { Quit; }
@@ -175,12 +175,12 @@ keybinds clear-defaults=true{
     shared_except "tab" "locked" {
         bind "Ctrl t" { SwitchToMode "Tab"; }
     }
-    // shared_except "move" "locked" {
-    //    bind "Ctrl h" { SwitchToMode "Move"; }
-    // }
-    // shared_except "tmux" "locked" {
-    //     bind "Ctrl b" { SwitchToMode "Tmux"; }
-    // }
+   // shared_except "move" "locked" {
+   //    bind "Ctrl h" { SwitchToMode "Move"; }
+   // }
+   // shared_except "tmux" "locked" {
+   //     bind "Ctrl b" { SwitchToMode "Tmux"; }
+   // }
 }
 
 plugins {
@@ -291,8 +291,7 @@ plugins {
 //   - false
 //
 // Change
-mouse_mode false
-
+// mouse_mode true
 // Configure the scroll back buffer size
 // This is the number of lines zellij stores for each pane in the scroll back
 // buffer. Excess number of lines are discarded in a FIFO fashion.
@@ -307,7 +306,7 @@ mouse_mode false
 // that will be used by default if this option is not set.
 // Examples:
 //
-// copy_command "xclip -selection clipboard" // x11
+copy_command "xclip -selection clipboard" // x11
 // copy_command "wl-copy"                    // wayland
 // copy_command "pbcopy"                     // osx
 
@@ -318,7 +317,7 @@ mouse_mode false
 //   - system (default)
 //   - primary
 //
-// copy_clipboard "primary"
+copy_clipboard "primary"
 
 // Enable or disable automatic copy (and clear) of selection when releasing mouse
 // Default: true
@@ -350,3 +349,4 @@ mouse_mode false
 // Default: true
 //
 // styled_underlines false
+scrollback_editor "/usr/local/bin/nvim"

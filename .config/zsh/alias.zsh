@@ -21,3 +21,5 @@ fi
 alias pp='xsel --clipboard --input'
 alias reload='exec $SHELL -l'
 alias v='nvim'
+alias zl='zellij'
+alias lg='lazygit'
