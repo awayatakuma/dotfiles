@@ -1,5 +1,5 @@
 {
-  "editor.wordWrap": "off",
+  "editor.wordWrap": "on",
   "editor.wordWrapColumn": 100,
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,

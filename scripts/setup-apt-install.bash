@@ -44,6 +44,7 @@ apt-get install -y \
 	tmux \
 	trash-cli \
 	unzip \
+	vim \
 	wget \
 	xsel \
 	zip \

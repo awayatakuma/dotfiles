@@ -72,6 +72,10 @@ snippets:
     context:
       lbuffer: '.+\s'
 
+  - name: zellij
+    keyword: zl
+    snippet: zellij
+
   - name: cdk deploy
     keyword: de
     snippet: deploy
@@ -151,4 +155,22 @@ completions:
     options:
       --multi: true
       --prompt: "'roslaunch> '"
+    callback: "awk '{print $1}'"
+
+  - name: rostopic echo
+    patterns:
+      - "^rostopic echo( [! ]*)? $"
+    sourceCommand: "LANG=C rostopic list"
+    options:
+      --multi: true
+      --prompt: "'rostopic echo> '"
+    callback: "awk '{print $1}'"
+
+  - name: zellij attach
+    patterns:
+      - "^zellij attach( [! ]*)? $"
+    sourceCommand: "LANG=C zellij list-sessions"
+    options:
+      --multi: true
+      --prompt: "'zellij attach> '"
     callback: "awk '{print $1}'"

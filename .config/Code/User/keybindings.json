@@ -18,12 +18,12 @@
     },
         // explorer: toggle
     {
-        "key": "ctrl+k ctrl+s",
+        "key": "ctrl+j ctrl+s",
         "command": "workbench.explorer.fileView.focus",
         "when": "!filesExplorerFocus"
     },
     {
-        "key": "ctrl+k ctrl+s",
+        "key": "ctrl+j ctrl+s",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "filesExplorerFocus"
     },
@@ -124,4 +124,55 @@
         "command": "workbench.action.terminal.kill",
         "when": "terminalFocus"
     },
-]
+    {
+        "key": "ctrl+f",
+        "command": "-workbench.action.terminal.focusFind",
+        "when": "terminalFindFocused && terminalHasBeenCreated || terminalFindFocused && terminalProcessSupported || terminalFocusInAny && terminalHasBeenCreated || terminalFocusInAny && terminalProcessSupported"
+    },
+    // disable ctrl+p when you're in a terminal pane
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    // disable ctrl+e when you're in a terminal pane
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    // disable ctrl+b when you're in a terminal pane
+    {
+        "key": "ctrl+e",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-workbench.action.toggleAuxiliaryBar"
+    },
+]   
