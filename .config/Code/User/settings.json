@@ -20,6 +20,16 @@
       "after": [
         "<Esc>"
       ]
+    },
+    {
+      "before": [
+        "j",
+        "o"
+      ],
+      "after": [
+        "<Esc>",
+        "o"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -101,7 +111,9 @@
       "workbench.action.toggleSidebarVisibility"
     ]
   },
-  "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
   "editor.fontFamily": "HackGen Console NF,  'Courier New', monospace",
+  "workbench.colorTheme": "Default High Contrast",
+  "workbench.startupEditor": "none",
+  "workbench.editor.empty.hint": "hidden",
 }
