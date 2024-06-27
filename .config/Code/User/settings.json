@@ -3,7 +3,9 @@
   "editor.wordWrapColumn": 100,
   "editor.renderWhitespace": "all",
   "editor.renderControlCharacters": true,
+  "editor.fontLigatures": true,
   "editor.minimap.enabled": false,
+  "terminal.integrated.copyOnSelection": true,
   "vim.useCtrlKeys": true,
   "vim.enableNeovim": true,
   "vim.neovimPath": "/usr/bin/nvim",
@@ -103,5 +105,7 @@
   },
   "workbench.colorTheme": "Tokyo Night Storm",
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "editor.fontFamily": "HackGen Console NF,  'Courier New', monospace",
+  "editor.fontFamily": "'Fira Code',  HackGen Console NF,  'Courier New', monospace",
+  "hediet.vscode-drawio.resizeImages": null,
+ 
 }
