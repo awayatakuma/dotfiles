@@ -50,7 +50,7 @@ apt-get install -y \
 	zip \
 	zsh
 
-apt remove neovim
+apt remove neovim -y
 # Docker
 # https://docs.docker.com/engine/install/ubuntu/
 # Add Docker's official GPG key:

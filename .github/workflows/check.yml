@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install required packages
-        run: apt-get update && apt-get install -y git sudo
+        run: |
+          ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
+          apt-get update && apt-get install -y git sudo
       - name: echo
-        run: echo "hello ci"
+        run: ./install.sh
