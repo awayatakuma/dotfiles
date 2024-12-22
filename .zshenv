@@ -62,4 +62,4 @@ path=(
     "$path[@]"
 )
 
-source "${CARGO_HOME}/env
+source "${CARGO_HOME}/env"

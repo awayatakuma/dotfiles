@@ -18,12 +18,12 @@
     },
         // explorer: toggle
     {
-        "key": "ctrl+j ctrl+s",
+        "key": "ctrl+k ctrl+s",
         "command": "workbench.explorer.fileView.focus",
         "when": "!filesExplorerFocus"
     },
     {
-        "key": "ctrl+j ctrl+s",
+        "key": "ctrl+k ctrl+s",
         "command": "workbench.action.toggleSidebarVisibility",
         "when": "filesExplorerFocus"
     },
