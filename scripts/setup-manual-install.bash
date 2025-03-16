@@ -6,25 +6,32 @@ source "$(dirname "$0")/envs.bash"
 if ! type lazygit >/dev/null 2>&1; then
 	LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
 	sudo mkdir -p /tmp/lazygit
-	sudo curl -Lo /tmp/lazygit/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
-	sudo tar xf /tmp/lazygit/lazygit.tar.gz -C /tmp/lazygit
-	sudo install /tmp/lazygit/lazygit /usr/local/bin
-	sudo rm -rf /tmp/lazygit
+	if [ "$(uname)" == 'Linux']; then 
+		sudo curl -Lo /usr/local/bin/lazygit "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz" | tar xf
+	elif  [ "$(uname)" == 'Darwin']; then
+		sudo curl -Lo /usr/local/bin/lazygit "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Darwin_arm64.tar.gz"
+	fi
+
+	sudo chmod +x /usr/local/bin/lazygit
+	sudo chown root:root /usr/local/bin/lazygit
 fi
 
 # lazydocker
-
 go install github.com/jesseduffield/lazydocker@latest
 sudo mv ${GOPATH}/bin/lazydocker /usr/local/bin
 
 # nvim
 if ! type nvim >/dev/null 2>&1; then
 	sudo mkdir -p /tmp/nvim
-	sudo curl -Lo /tmp/nvim/nvim-linux64.tar.gz https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 	sudo rm -rf /opt/nvim
-	sudo tar -C /opt -xzf /tmp/nvim/nvim-linux64.tar.gz
-	sudo rm -rf /tmp/nvim
-	sudo ln -s /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
+	if [ "$(uname)" == 'Linux']; then 
+		sudo curl -Lo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz | tar xf
+	elif  [ "$(uname)" == 'Darwin']; then
+		sudo curl -Lo /usr/local/bin/nvim https://github.com/neovim/neovim/releases/latest/download/nvim-macos-arm64.tar.gz | tar xf
+	fi
+
+	sudo chmod +x /usr/local/bin/nvim
+	sudo chown root:root /usr/local/bin/nvim
 fi
 
 # fzf
@@ -35,18 +42,13 @@ fi
 
 # zellij
 if ! type zellij >/dev/null 2>&1; then
-	wget -c https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz -O - | tar xz
-	sudo chmod +x zellij
-	sudo chown root:root zellij
-	sudo mv zellij /usr/local/bin/zellij
-fi
-
-# eza
-if ! type eza >/dev/null 2>&1; then
-	wget -c https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz -O - | tar xz
-	sudo chmod +x eza
-	sudo chown root:root eza
-	sudo mv eza /usr/local/bin/eza
+	if [ "$(uname)" == 'Linux']; then 
+		sudo curl -Lo /usr/local/bin/zellij https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz | tar xf
+	elif  [ "$(uname)" == 'Darwin']; then
+		sudo curl -Lo /tmp/nvim/nvim.tar.gz https://github.com/zellij-org/zellij/releases/latest/download/zellij-aarch64-apple-darwin.tar.gz | tar xf
+	fi
+	sudo chmod +x /usr/local/bin/zellij
+	sudo chown root:root /usr/local/bin/zellij
 fi
 
 # zeno

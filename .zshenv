@@ -18,6 +18,7 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 
 # Deno
 export DENO_HOME="$XDG_DATA_HOME/deno"
+DENO_NO_UPDATE_CHECK=1
 
 # Go
 export GOPATH="$XDG_DATA_HOME/go"

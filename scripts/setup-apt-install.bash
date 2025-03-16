@@ -5,6 +5,7 @@ set -eux
 apt-get install -y software-properties-common
 add-apt-repository -y ppa:git-core/ppa
 add-apt-repository -y ppa:longsleep/golang-backports
+
 apt-get update
 apt-get upgrade -y
 apt-get install -y \
@@ -16,6 +17,7 @@ apt-get install -y \
 	clangd \
 	cmake \
 	curl \
+	eza \
 	fd-find \
 	gcc \
 	git \
@@ -51,7 +53,7 @@ apt-get install -y \
 	zsh
 
 apt remove neovim -y
-# Docker
+
 # https://docs.docker.com/engine/install/ubuntu/
 # Add Docker's official GPG key:
 apt-get update

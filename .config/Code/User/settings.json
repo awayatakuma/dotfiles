@@ -23,16 +23,6 @@
         "<Esc>"
       ]
     },
-    {
-      "before": [
-        "j",
-        "o"
-      ],
-      "after": [
-        "<Esc>",
-        "o"
-      ]
-    }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
