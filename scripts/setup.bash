@@ -9,7 +9,6 @@ if command -v apt &> /dev/null; then
 elif command -v dnf  &> /dev/null; then
     sudo /bin/bash "$CUR_DIR/setup-dnf-install.bash"
 fi
-sudo /bin/bash "$CUR_DIR/setup-install-docker.bash"
 /bin/bash "$CUR_DIR/setup-links.bash"
 /bin/bash "$CUR_DIR/setup-langs.bash"
 /bin/bash "$CUR_DIR/setup-manual-install.bash"
