@@ -12,5 +12,16 @@ jobs:
         run: |
           ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
           apt-get update && apt-get install -y git sudo
-      - name: echo
+      - name: ubuntu-install
+        run: ./install.sh
+  almalinux:
+    runs-on: ubuntu-latest
+    container: almalinux:9
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install required packages
+        run: |
+          ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+          dnf update -y && dnf install -y git sudo
+      - name: almalinux-install
         run: ./install.sh
