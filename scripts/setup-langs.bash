@@ -13,7 +13,6 @@ fi
 
 # Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/bash -s -- -y
-rustup update stable
 
 # deno
 curl -fsSL https://deno.land/install.sh | sh

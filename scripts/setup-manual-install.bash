@@ -5,11 +5,16 @@ source "$(dirname "$0")/envs.bash"
 cleanup() {
     sudo rm -rf /tmp/workdir
 }
+
+get_latest_version() {
+    curl -s "$1" | grep -Po '"tag_name": "v\K[^"]*'
+}
+
 trap cleanup EXIT
 
 # lazygit
 if ! type lazygit >/dev/null 2>&1; then
-    LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -Po '"tag_name": "v\K[^"]*')
+    LAZYGIT_VERSION=$(get_latest_version "https://api.github.com/repos/jesseduffield/lazygit/releases/latest")
     sudo mkdir -p /tmp/workdir
     if [ "$(uname)" = 'Linux' ]; then
         sudo curl -Lo /tmp/workdir/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
@@ -31,7 +36,7 @@ fi
 # nvim
 if ! type nvim >/dev/null 2>&1; then
     sudo mkdir -p /tmp/workdir
-    NEO_VIM_VERSION=$(curl -s "https://api.github.com/repos/neovim/neovim/releases/latest"| grep -Po '"tag_name": "v\K[^"]*')
+    NEO_VIM_VERSION=$(get_latest_version "https://api.github.com/repos/neovim/neovim/releases/latest")
     if [ "$(uname)" = 'Linux' ]; then
         sudo curl -Lo /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-linux-x86_64.tar.gz"
 
@@ -73,5 +78,13 @@ fi
 # ubuntu and mac are expected to install it via package managers
 # this code is virtually for almalinux
 if ! command -v eza >/dev/null 2>&1; then
-    cargo install eza
+    sudo mkdir -p /tmp/workdir
+    EZA_VERSION=$(get_latest_version "https://api.github.com/repos/eza-community/eza/releases/latest")
+    if [ "$(uname)" = 'Linux' ]; then
+        sudo curl -Lo /tmp/workdir/eza.tar.gz "https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz"
+    fi
+    sudo tar -xzf /tmp/workdir/eza.tar.gz -C /tmp/workdir
+    sudo mv /tmp/workdir/eza /usr/local/bin/eza
+    sudo chmod +x /usr/local/bin/eza
+    sudo chown root:root /usr/local/bin/eza
 fi
