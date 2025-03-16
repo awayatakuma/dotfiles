@@ -4,7 +4,6 @@ set -eux
 # dnf
 dnf install -y dnf-plugins-core
 dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
-dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
 dnf update -y
 dnf upgrade -y
