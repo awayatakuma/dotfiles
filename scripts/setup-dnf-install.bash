@@ -4,6 +4,8 @@ set -eux
 # dnf
 dnf install -y dnf-plugins-core
 dnf config-manager --add-repo https://cli.github.com/packages/rpm/gh-cli.repo
+dnf install -y epel-release
+dnf install -y epel-next-release
 
 dnf update -y
 dnf upgrade -y
@@ -15,7 +17,6 @@ dnf install -y \
 	cmake \
 	curl \
 	fd-find \
-	eza \
 	gcc \
 	git \
 	git-lfs \
@@ -35,7 +36,6 @@ dnf install -y \
 	pkg-config \
 	python3 \
 	python3-pip \
-	python3-pynvim \
 	ripgrep \
 	ShellCheck \
 	sqlite \
@@ -53,8 +53,8 @@ dnf remove -y neovim
 # https://docs.docker.com/engine/install/rhel/
 # Add Docker's official GPG key:
 dnf update
-dnf -y install dnf-plugins-core
+dnf install -y dnf-plugins-core
 dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
 
 dnf update
-dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+dnf install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
