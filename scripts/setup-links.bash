@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-source
 set -eux
 source "$(dirname "$0")/envs.bash"
 
