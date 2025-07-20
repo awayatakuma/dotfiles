@@ -169,6 +169,63 @@ gbr() {
     [ -n "$branch" ] && git checkout "$branch"
 }
 
+# AWS convenience functions
+# Switch AWS profile
+awsp() {
+    if [[ "$#" -eq 0 ]]; then
+        aws configure list-profiles | fzf | read -r profile
+    else
+        profile="$1"
+    fi
+    [ -n "$profile" ] && export AWS_PROFILE="$profile" && echo "AWS profile set to: $profile"
+}
+
+# Development convenience functions
+# Quick project finder and opener
+proj() {
+    local project_dir="${PROJECT_DIR:-$HOME/projects}"
+    local project
+    project=$(find "$project_dir" -maxdepth 2 -type d -name ".git" | sed 's|/.git||' | fzf)
+    [ -n "$project" ] && cd "$project"
+}
+
+# Port checker
+port() {
+    if [[ "$#" -eq 0 ]]; then
+        echo "Usage: port <port_number>"
+        return 1
+    fi
+    lsof -i ":$1" || echo "Port $1 is not in use"
+}
+
+# Kill process by port
+killport() {
+    if [[ "$#" -eq 0 ]]; then
+        echo "Usage: killport <port_number>"
+        return 1
+    fi
+    local pid=$(lsof -ti ":$1")
+    [ -n "$pid" ] && kill -9 "$pid" && echo "Killed process on port $1" || echo "No process found on port $1"
+}
+
+# Quick weather check
+weather() {
+    local city="${1:-Tokyo}"
+    curl -s "wttr.in/$city?format=3"
+}
+
+netinfo() {
+    echo "=== Network Information ==="
+    echo -n "External IP: "
+    curl -s ipinfo.io/ip
+    echo -n "Local IP: "
+    ip route get 1.1.1.1 | awk '{print $7}' | head -1
+    echo "DNS Servers:"
+    cat /etc/resolv.conf | grep nameserver | awk '{print "  " $2}'
+    echo "Active connections:"
+    ss -tuln | head -10
+}
+
 zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|history|lazygit|la|ll|ls|rm|rmdir|trash|es|ee|eea)($| )" ]]
