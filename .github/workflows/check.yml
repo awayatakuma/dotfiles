@@ -14,14 +14,12 @@ jobs:
           apt-get update && apt-get install -y git sudo curl
       - name: ubuntu-install
         run: ./install.sh
-  almalinux:
-    runs-on: ubuntu-latest
-    container: almalinux:9
+  macos:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Install required packages
+      - name: Install Homebrew
         run: |
-          ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-          dnf update -y && dnf install -y git sudo curl
-      - name: almalinux-install
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - name: macos-install
         run: ./install.sh

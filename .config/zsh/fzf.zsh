@@ -121,15 +121,15 @@ fzf-docker() {
       --bind 'enter:execute(docker exec -it {1} /bin/bash)+abort'
 }
 
-# Package search (if using apt/dnf)
+# Package search (apt for Ubuntu, brew for macOS)
 fzf-packages() {
   if command -v apt >/dev/null; then
     apt list 2>/dev/null | fzf \
       --preview 'apt show {1}' \
       --preview-window 'right:40%:wrap'
-  elif command -v dnf >/dev/null; then
-    dnf list available | fzf \
-      --preview 'dnf info {1}' \
+  elif command -v brew >/dev/null; then
+    brew search | fzf \
+      --preview 'brew info {1}' \
       --preview-window 'right:40%:wrap'
   fi
 }
