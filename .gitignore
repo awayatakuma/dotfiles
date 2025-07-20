@@ -21,6 +21,8 @@
 !/.config/git/.gitconfig
 !/.config/nvim/
 !/.config/nvim/**
+!/.config/vi/
+!/.config/vi/.exrc
 !/.config/vim/
 !/.config/vim/.vimrc
 !/.config/zsh/

@@ -49,6 +49,10 @@ setopt SHARE_HISTORY
 export DOCKER_CONFIG="$XDG_DATA_HOME/docker"
 export FZF_HOME="$XDG_DATA_HOME/.fzf/"
 
+# Vim/Vi configuration paths
+export VIMINIT="source $XDG_CONFIG_HOME/vim/.vimrc"
+export EXINIT="source $XDG_CONFIG_HOME/vi/.exrc"
+
 
 path=(
     "$NVM_DIR/versions/node/$NODE_VERSION/bin"(N-/)
