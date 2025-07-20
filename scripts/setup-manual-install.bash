@@ -7,7 +7,7 @@ cleanup() {
 }
 
 get_latest_version() {
-    curl -s "$1" | grep '"tag_name"' | sed 's/.*"tag_name": "v\([^"]*\)".*/\1/'
+    curl -s "$1" | grep '"tag_name"' | awk -F'"' '{print $4}' | sed 's/^v//' | head -1
 }
 
 trap cleanup EXIT
@@ -24,7 +24,9 @@ if ! type lazygit >/dev/null 2>&1; then
     sudo tar -xzf /tmp/workdir/lazygit.tar.gz -C /tmp/workdir
     sudo mv /tmp/workdir/lazygit /usr/local/bin/
     sudo chmod +x /usr/local/bin/lazygit
-    sudo chown root:root /usr/local/bin/lazygit
+    if [ "$(uname)" = 'Linux' ]; then
+        sudo chown root:root /usr/local/bin/lazygit
+    fi
 fi
 
 # lazydocker
@@ -44,9 +46,11 @@ if ! type nvim >/dev/null 2>&1; then
         sudo curl -Lo /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-macos-arm64.tar.gz"
     fi
     sudo tar -xzf /tmp/workdir/nvim.tar.gz -C /tmp/workdir
-    sudo mv /tmp/workdir/nvim-linux-x86_64/bin/nvim /usr/local/bin/
+    sudo mv /tmp/workdir/nvim-*/bin/nvim /usr/local/bin/
     sudo chmod +x /usr/local/bin/nvim
-    sudo chown root:root /usr/local/bin/nvim
+    if [ "$(uname)" = 'Linux' ]; then
+        sudo chown root:root /usr/local/bin/nvim
+    fi
 fi
 
 # fzf
@@ -66,7 +70,9 @@ if ! type zellij >/dev/null 2>&1; then
     sudo tar -xzf /tmp/workdir/zellij.tar.gz -C /tmp/workdir
     sudo mv /tmp/workdir/zellij /usr/local/bin/
     sudo chmod +x /usr/local/bin/zellij
-    sudo chown root:root /usr/local/bin/zellij
+    if [ "$(uname)" = 'Linux' ]; then
+        sudo chown root:root /usr/local/bin/zellij
+    fi
 fi
 
 # zeno
@@ -86,5 +92,7 @@ if ! command -v eza >/dev/null 2>&1; then
     sudo tar -xzf /tmp/workdir/eza.tar.gz -C /tmp/workdir
     sudo mv /tmp/workdir/eza /usr/local/bin/eza
     sudo chmod +x /usr/local/bin/eza
-    sudo chown root:root /usr/local/bin/eza
+    if [ "$(uname)" = 'Linux' ]; then
+        sudo chown root:root /usr/local/bin/eza
+    fi
 fi
