@@ -11,7 +11,7 @@ jobs:
       - name: Install required packages
         run: |
           ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
-          apt-get update && apt-get install -y git sudo
+          apt-get update && apt-get install -y git sudo curl
       - name: ubuntu-install
         run: ./install.sh
   almalinux:
@@ -22,6 +22,6 @@ jobs:
       - name: Install required packages
         run: |
           ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-          dnf update -y && dnf install -y git sudo
+          dnf update -y && dnf install -y git sudo curl
       - name: almalinux-install
         run: ./install.sh

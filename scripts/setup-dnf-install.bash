@@ -8,6 +8,8 @@ dnf config-manager --set-enabled crb
 dnf install -y epel-release
 dnf install -y epel-next-release
 
+dnf remove -y curl-minimal neovim
+
 dnf update -y
 dnf upgrade -y
 dnf install -y \
@@ -48,8 +50,6 @@ dnf install -y \
 	xsel \
 	zip \
 	zsh
-
-dnf remove -y neovim
 
 # https://docs.docker.com/engine/install/rhel/
 # Add Docker's official GPG key:
