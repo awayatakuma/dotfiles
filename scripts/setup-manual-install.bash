@@ -7,7 +7,7 @@ cleanup() {
 }
 
 get_latest_version() {
-    curl -s "$1" | grep -Po '"tag_name": "v\K[^"]*'
+    curl -s "$1" | grep '"tag_name"' | sed 's/.*"tag_name": "v\([^"]*\)".*/\1/'
 }
 
 trap cleanup EXIT
