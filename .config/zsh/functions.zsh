@@ -4,7 +4,7 @@
 
 mkd() {
     if [[ "$#" -eq 0 ]]; then
-        echo "mkdir: オペランドがありません"
+        echo "mkdir: missing operand"
     else
         command mkdir -p "$@"
     fi
@@ -13,7 +13,7 @@ mkd() {
 
 rmr() {
     if [[ "$#" -eq 0 ]]; then
-        echo "rm -rf: オペランドがありません"
+        echo "rm -rf: missing operand"
     else
         command rm -rf "$@"
     fi
@@ -62,6 +62,113 @@ docker-rmi() {
 }
 
 # --]]
+
+# Git convenience functions
+gacp() {
+    if [[ "$#" -eq 0 ]]; then
+        echo "Usage: gacp <commit message>"
+        return 1
+    fi
+    git add . && git commit -m "$*" && git push
+}
+
+# Create directory and change into it
+mcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Find and change to directory
+ff() {
+    local dir
+    dir=$(find . -type d 2>/dev/null | fzf +m) && cd "$dir"
+}
+
+# Find and kill process
+pk() {
+    local pid
+    pid=$(ps -ef | grep -v grep | fzf | awk '{print $2}')
+    [ -n "$pid" ] && kill -${1:-9} "$pid"
+}
+
+# Pretty print JSON
+json() {
+    if [ -t 0 ]; then
+        python3 -m json.tool <<< "$*"
+    else
+        python3 -m json.tool
+    fi
+}
+
+# Start simple HTTP server
+serve() {
+    local port=${1:-8000}
+    python3 -m http.server "$port"
+}
+
+
+# Display disk usage sorted by size
+dus() {
+    du -sh ${1:-.}/* 2>/dev/null | sort -hr
+}
+
+# Extract archives automatically
+extract() {
+    if [ -f "$1" ]; then
+        case $1 in
+            *.tar.bz2)   tar xjf "$1" ;;
+            *.tar.gz)    tar xzf "$1" ;;
+            *.bz2)       bunzip2 "$1" ;;
+            *.rar)       unrar x "$1" ;;
+            *.gz)        gunzip "$1" ;;
+            *.tar)       tar xf "$1" ;;
+            *.tbz2)      tar xjf "$1" ;;
+            *.tgz)       tar xzf "$1" ;;
+            *.zip)       unzip "$1" ;;
+            *.Z)         uncompress "$1" ;;
+            *.7z)        7z x "$1" ;;
+            *)           echo "'$1' is not a supported format" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
+# Check IP addresses
+myip() {
+    echo -n "Local IP: "
+    ip route get 1.1.1.1 | awk '{print $7}' | head -1
+    echo -n "Global IP: "
+    curl -s ipinfo.io/ip
+}
+
+# Create backup file/directory with timestamp
+backup() {
+    if [[ "$#" -eq 0 ]]; then
+        echo "Usage: backup <file|directory>"
+        return 1
+    fi
+    if [[ ! -e "$1" ]]; then
+        echo "Error: '$1' does not exist"
+        return 1
+    fi
+    cp -r "$1"{,.backup-$(date +%Y%m%d-%H%M%S)}
+    echo "Backup created: $1.backup-$(date +%Y%m%d-%H%M%S)"
+}
+
+
+# Generate random password
+genpass() {
+    local length=${1:-16}
+    openssl rand -base64 $((length * 3 / 4)) | tr -d "=+/" | cut -c1-${length}
+}
+
+# Select git branch with fzf and checkout
+gbr() {
+    local branch
+    branch=$(git branch -a | grep -v HEAD | sed 's/remotes\/origin\///' | sort -u | fzf)
+    [ -n "$branch" ] && git checkout "$branch"
+}
+
 zshaddhistory() {
     local line="${1%%$'\n'}"
     [[ ! "$line" =~ "^(cd|history|lazygit|la|ll|ls|rm|rmdir|trash|es|ee|eea)($| )" ]]
