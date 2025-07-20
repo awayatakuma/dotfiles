@@ -80,7 +80,13 @@ mcd() {
 # Find and change to directory
 ff() {
     local dir
-    dir=$(find . -type d 2>/dev/null | fzf +m) && cd "$dir"
+    if command -v fdfind >/dev/null; then
+        dir=$(fdfind --type d . | fzf +m) && cd "$dir"
+    elif command -v fd >/dev/null; then
+        dir=$(fd --type d . | fzf +m) && cd "$dir"
+    else
+        dir=$(find . -type d 2>/dev/null | fzf +m) && cd "$dir"
+    fi
 }
 
 # Find and kill process

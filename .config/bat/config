@@ -1,0 +1,34 @@
+# bat configuration
+# See 'bat --help' for all available options
+
+# Set theme (use 'bat --list-themes' to see all available themes)
+--theme="Monokai Extended"
+
+# Show line numbers, Git modifications and file header (but no grid)
+--style="numbers,changes,header"
+
+# Use italic text on the terminal (not supported on all terminals)
+--italic-text=always
+
+# Add mouse scrolling support in less (does not work with --paging=never)
+--pager="less -FR"
+
+# Use C++ syntax for .ino files
+--map-syntax "*.ino:C++"
+
+# Use "gitignore" highlighting for ".ignore" files
+--map-syntax ".ignore:gitignore"
+
+# Use JSON syntax for lock files
+--map-syntax "Cargo.lock:JSON"
+--map-syntax "composer.lock:JSON"
+--map-syntax "package-lock.json:JSON"
+
+# Show decorations
+--decorations=always
+
+# Wrap text instead of using horizontal scrolling
+--wrap=auto
+
+# Set tab width to 2 (matching your editor preference)
+--tabs=2

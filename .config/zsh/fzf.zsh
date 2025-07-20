@@ -1,8 +1,12 @@
 # Load fzf
 source "$XDG_DATA_HOME/.fzf/shell/completion.zsh"
 
-# fzf configuration - fallback to find if fd not available
-if command -v fd >/dev/null; then
+# fzf configuration - use fdfind (Debian/Ubuntu) or fd
+if command -v fdfind >/dev/null; then
+    export FZF_DEFAULT_COMMAND='fdfind --type f --hidden --follow --exclude .git'
+    export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+    export FZF_ALT_C_COMMAND='fdfind --type d --hidden --follow --exclude .git'
+elif command -v fd >/dev/null; then
     export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
     export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
     export FZF_ALT_C_COMMAND='fd --type d --hidden --follow --exclude .git'
@@ -38,8 +42,13 @@ export FZF_DEFAULT_OPTS="
   --bind 'alt-y:execute-silent(echo {+} | xsel --clipboard)'
 "
 
-# File search with preview - fallback to cat if bat not available
-if command -v bat >/dev/null; then
+# File search with preview - use batcat (Debian/Ubuntu) or bat
+if command -v batcat >/dev/null; then
+    export FZF_CTRL_T_OPTS="
+      --preview 'batcat --color=always --style=numbers --line-range=:500 {}'
+      --preview-window 'right:40%:wrap'
+    "
+elif command -v bat >/dev/null; then
     export FZF_CTRL_T_OPTS="
       --preview 'bat --color=always --style=numbers --line-range=:500 {}'
       --preview-window 'right:40%:wrap'

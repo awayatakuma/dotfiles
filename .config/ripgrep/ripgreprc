@@ -1,0 +1,35 @@
+# ripgrep configuration
+# See 'rg --help' for more options
+
+# Always use smart case search
+--smart-case
+
+# Always use colors
+--color=always
+
+# Show line numbers
+--line-number
+
+# Set max columns to prevent very long lines from slowing down search
+--max-columns=150
+
+# Use multiple threads (auto-detect number of cores)
+--threads=0
+
+# Default file type associations
+--type-add=web:*.{html,css,scss,js,jsx,ts,tsx,vue,svelte}
+--type-add=config:*.{yml,yaml,toml,ini,conf,config}
+--type-add=docker:*{Dockerfile,Containerfile,.dockerignore}
+
+# Exclude common directories and files
+--glob=!.git/
+--glob=!node_modules/
+--glob=!.cache/
+--glob=!dist/
+--glob=!build/
+--glob=!target/
+--glob=!*.min.js
+--glob=!*.bundle.js
+--glob=!package-lock.json
+--glob=!yarn.lock
+--glob=!.DS_Store

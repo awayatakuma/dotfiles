@@ -17,6 +17,17 @@ if (( ${+commands[eza]} )); then
     alias tree='eza --color --group-directories-first --tree --icons'
 fi
 
+# Modern CLI tool aliases (Debian/Ubuntu naming compatibility)
+if (( ${+commands[batcat]} )); then
+    alias bat='batcat'
+fi
+
+if (( ${+commands[fdfind]} )); then
+    alias fd='fdfind'
+fi
+
+# ripgrep available as rg (don't replace grep to avoid compatibility issues)
+
 # others
 alias pp='xsel --clipboard --input'
 alias reload='exec $SHELL -l'

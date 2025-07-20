@@ -53,6 +53,9 @@ export FZF_HOME="$XDG_DATA_HOME/.fzf/"
 export VIMINIT=":source $XDG_CONFIG_HOME/vim/.vimrc"
 export EXINIT=":source $XDG_CONFIG_HOME/vi/.exrc"
 
+# Modern CLI tools configuration
+export RIPGREP_CONFIG_PATH="$XDG_CONFIG_HOME/ripgrep/ripgreprc"
+
 
 path=(
     "$NVM_DIR/versions/node/$NODE_VERSION/bin"(N-/)

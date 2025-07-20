@@ -13,6 +13,7 @@
 !/.config/
 !/.config/alacritty/alacritty.toml
 !/.config/alacritty/themes/themes/tokyo-night-storm.toml
+!/.config/bat/config
 !/.config/Code/
 !/.config/Code/User
 !/.config/Code/User/settings.json
@@ -21,6 +22,7 @@
 !/.config/git/.gitconfig
 !/.config/nvim/
 !/.config/nvim/**
+!/.config/ripgrep/ripgreprc
 !/.config/vi/
 !/.config/vi/.exrc
 !/.config/vim/
