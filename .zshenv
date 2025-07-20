@@ -26,6 +26,9 @@ export GOPATH="$XDG_DATA_HOME/go"
 #Dotnet
 export DOTNET_ROOT="$XDG_DATA_HOME/.dotnet"
 
+#nvm
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+
 # History
 export HISTFILE="$XDG_STATE_HOME/zsh_history"
 export HISTSIZE=12000
@@ -47,6 +50,7 @@ export FZF_HOME="$XDG_DATA_HOME/.fzf/"
 
 
 path=(
+    "$NVM_DIR/versions/node/v22.17.0/bin"(N-/)
     '/usr/local/bin'(N-/)
     '/usr/bin'(N-/)
     '/bin'(N-/)
