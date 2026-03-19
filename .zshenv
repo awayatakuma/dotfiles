@@ -41,16 +41,15 @@ setopt EXTENDED_HISTORY
 setopt GLOBDOTS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE 
-setopt HIST_SAVE_NO_DUPS 
-setopt SHARE_HISTORY 
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt SHARE_HISTORY
 
 #Others
 export DOCKER_CONFIG="$XDG_DATA_HOME/docker"
 export FZF_HOME="$XDG_DATA_HOME/.fzf/"
 
 # Vim/Vi configuration paths
-export VIMINIT=":source $XDG_CONFIG_HOME/vim/.vimrc"
 export EXINIT=":source $XDG_CONFIG_HOME/vi/.exrc"
 
 # Modern CLI tools configuration
