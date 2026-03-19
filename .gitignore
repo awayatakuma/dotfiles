@@ -18,6 +18,7 @@
 !/.config/Code/User
 !/.config/Code/User/settings.json
 !/.config/Code/User/keybindings.json
+!/.config/ghostty/**
 !/.config/git/
 !/.config/git/.gitconfig
 !/.config/nvim/
