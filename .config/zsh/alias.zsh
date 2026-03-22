@@ -29,7 +29,11 @@ fi
 # ripgrep available as rg (don't replace grep to avoid compatibility issues)
 
 # others
-alias pp='xsel --clipboard --input'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  alias pp='pbcopy'
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias pp='xsel --clipboard --input'
+fi
 alias reload='exec $SHELL -l'
 alias v='nvim'
 alias zl='zellij'
