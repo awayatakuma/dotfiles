@@ -24,6 +24,8 @@
 !/.config/nvim/
 !/.config/nvim/**
 !/.config/ripgrep/ripgreprc
+!/.config/sketchybar
+!/.config/sketchybar/**
 !/.config/vi/
 !/.config/vi/.exrc
 !/.config/vim/
