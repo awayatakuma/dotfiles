@@ -17,7 +17,7 @@ local cal_clock = sbar.add("item", {
 	position = "right",
 	update_freq = 1,
 	padding_left = -43,
-	padding_right = 12,
+	padding_right = 22,
 })
 
 local cal_day_of_week = sbar.add("item", {
@@ -34,7 +34,7 @@ local cal_day_of_week = sbar.add("item", {
 	position = "right",
 	update_freq = 1,
 	padding_left = 0,
-	padding_right = 0,
+	padding_right = 22,
 })
 
 local cal_month = sbar.add("item", {
@@ -52,7 +52,7 @@ local cal_month = sbar.add("item", {
 	position = "right",
 	update_freq = 1,
 	padding_left = -24,
-	padding_right = 5,
+	padding_right = 8,
 })
 
 local cal_day = sbar.add("item", {
@@ -70,16 +70,17 @@ local cal_day = sbar.add("item", {
 	position = "right",
 	update_freq = 1,
 	padding_left = 3,
-	padding_right = 0,
+	padding_right = 8,
 })
 
 -- Double border for calendar using a single item bracket
 sbar.add("bracket", { cal_clock.name, cal_month.name, cal_day_of_week.name, cal_day.name }, {
 	background = {
 		color = colors.tn_black3,
-		height = 34,
+		height = 30,
 		border_color = colors.tn_blue,
 	},
+	padding_left = 100,
 })
 
 -- Padding item required because of bracket
@@ -102,4 +103,4 @@ cal_day:subscribe({ "forced", "routine", "system_woke" }, function(env)
 end)
 
 -- add width
-sbar.add("item", { position = "right", width = 6 })
+sbar.add("item", { position = "right", width = 16 })
