@@ -48,6 +48,7 @@ setopt SHARE_HISTORY
 #Others
 export DOCKER_CONFIG="$XDG_DATA_HOME/docker"
 export FZF_HOME="$XDG_DATA_HOME/.fzf/"
+export EDITOR=vi
 
 # Vim/Vi configuration paths
 export EXINIT=":source $XDG_CONFIG_HOME/vi/.exrc"
