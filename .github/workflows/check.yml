@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ubuntu:latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Install required packages
         run: |
           ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
@@ -17,6 +17,6 @@ jobs:
   macos:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: macos-install
         run: ./install.sh

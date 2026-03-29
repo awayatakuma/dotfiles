@@ -80,22 +80,5 @@ if ! type zeno >/dev/null 2>&1; then
   git clone https://github.com/yuki-yano/zeno.zsh.git $XDG_DATA_HOME/zeno
 fi
 
-# eza
-# ubuntu and mac are expected to install it via package managers
-# this code is virtually for almalinux
-if ! command -v eza >/dev/null 2>&1; then
-  sudo mkdir -p /tmp/workdir
-  EZA_VERSION=$(get_latest_version "https://api.github.com/repos/eza-community/eza/releases/latest")
-  if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -fLo /tmp/workdir/eza.tar.gz "https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz"
-  fi
-  sudo tar -xzf /tmp/workdir/eza.tar.gz -C /tmp/workdir
-  sudo mv /tmp/workdir/eza /usr/local/bin/eza
-  sudo chmod +x /usr/local/bin/eza
-  if [ "$(uname)" = 'Linux' ]; then
-    sudo chown root:root /usr/local/bin/eza
-  fi
-fi
-
 # mise
 curl https://mise.run | sh
