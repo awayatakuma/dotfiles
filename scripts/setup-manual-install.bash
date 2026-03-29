@@ -37,20 +37,20 @@ fi
 
 # nvim
 if ! type nvim >/dev/null 2>&1; then
-  sudo mkdir -p /tmp/workdir
-  NEO_VIM_VERSION=$(get_latest_version "https://api.github.com/repos/neovim/neovim/releases/latest")
-  if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -fLo /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-linux-x86_64.tar.gz"
+  (
+    # Download latest nvim
+    LATEST=$(get_latest_version "https://api.github.com/repos/neovim/neovim/releases/latest")
+    NV_VER=${LATEST:-0.11.7}
+    [ "$(uname)" = "Darwin" ] && ARCH="macos-arm64" || ARCH="linux-x86_64"
+    URL="https://github.com/neovim/neovim/releases/download/v${NV_VER}/nvim-${ARCH}.tar.gz"
 
-  elif [ "$(uname)" = 'Darwin' ]; then
-    sudo curl -fLo /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-macos-arm64.tar.gz"
-  fi
-  sudo tar -xzf /tmp/workdir/nvim.tar.gz -C /tmp/workdir
-  sudo mv /tmp/workdir/nvim-*/bin/nvim /usr/local/bin/
-  sudo chmod +x /usr/local/bin/nvim
-  if [ "$(uname)" = 'Linux' ]; then
-    sudo chown root:root /usr/local/bin/nvim
-  fi
+    # Install nvim
+    sudo mkdir -p /opt/nvim
+    curl -fLo /tmp/nvim.tar.gz "$URL"
+    sudo tar -xzf /tmp/nvim.tar.gz -C /opt/nvim --strip-components 1
+    sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+    rm /tmp/nvim.tar.gz
+  )
 fi
 
 # fzf
