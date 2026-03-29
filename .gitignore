@@ -21,8 +21,8 @@
 !/.config/ghostty/**
 !/.config/git/
 !/.config/git/.gitconfig
-!/.config/nvim/
-!/.config/nvim/**
+!/.config/mise
+!/.config/mise/**
 !/.config/ripgrep/ripgreprc
 !/.config/sketchybar
 !/.config/sketchybar/**
