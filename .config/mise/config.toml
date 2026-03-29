@@ -1,0 +1,4 @@
+[tools]
+node = "lts"
+rust = "latest"
+python = "3.12"
