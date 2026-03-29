@@ -4,11 +4,9 @@ source "$ZDOTDIR/alias.zsh"
 source "$ZDOTDIR/functions.zsh"
 source "$ZDOTDIR/zeno.setting.zsh"
 
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && nvm use "$NODE_VERSION" 2>/dev/null
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-if [ -f "$ZDOTDIR/.zshenv.local" ]; then
-    source "$ZDOTDIR/.zshenv.local"
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
 fi
 
 neofetch
