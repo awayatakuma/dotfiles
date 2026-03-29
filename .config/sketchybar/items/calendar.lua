@@ -16,7 +16,7 @@ local cal_clock = sbar.add("item", {
 	},
 	position = "right",
 	update_freq = 1,
-	padding_left = -43,
+	padding_left = -48,
 	padding_right = 22,
 })
 
