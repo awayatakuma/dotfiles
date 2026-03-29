@@ -17,9 +17,9 @@ if ! type lazygit >/dev/null 2>&1; then
   LAZYGIT_VERSION=$(get_latest_version "https://api.github.com/repos/jesseduffield/lazygit/releases/latest")
   sudo mkdir -p /tmp/workdir
   if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -Lof /tmp/workdir/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
   elif [ "$(uname)" = 'Darwin' ]; then
-    sudo curl -Lof /tmp/workdir/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Darwin_arm64.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_${LAZYGIT_VERSION}_Darwin_arm64.tar.gz"
   fi
   sudo tar -xzf /tmp/workdir/lazygit.tar.gz -C /tmp/workdir
   sudo mv /tmp/workdir/lazygit /usr/local/bin/
@@ -40,10 +40,10 @@ if ! type nvim >/dev/null 2>&1; then
   sudo mkdir -p /tmp/workdir
   NEO_VIM_VERSION=$(get_latest_version "https://api.github.com/repos/neovim/neovim/releases/latest")
   if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -Lof /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-linux-x86_64.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-linux-x86_64.tar.gz"
 
   elif [ "$(uname)" = 'Darwin' ]; then
-    sudo curl -Lof /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-macos-arm64.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/nvim.tar.gz "https://github.com/neovim/neovim/releases/download/v${NEO_VIM_VERSION}/nvim-macos-arm64.tar.gz"
   fi
   sudo tar -xzf /tmp/workdir/nvim.tar.gz -C /tmp/workdir
   sudo mv /tmp/workdir/nvim-*/bin/nvim /usr/local/bin/
@@ -63,9 +63,9 @@ fi
 if ! type zellij >/dev/null 2>&1; then
   sudo mkdir -p /tmp/workdir
   if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -Lof /tmp/workdir/zellij.tar.gz "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/zellij.tar.gz "https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz"
   elif [ "$(uname)" = 'Darwin' ]; then
-    sudo curl -Lof /tmp/workdir/zellij.tar.gz "https://github.com/zellij-org/zellij/releases/latest/download/zellij-aarch64-apple-darwin.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/zellij.tar.gz "https://github.com/zellij-org/zellij/releases/latest/download/zellij-aarch64-apple-darwin.tar.gz"
   fi
   sudo tar -xzf /tmp/workdir/zellij.tar.gz -C /tmp/workdir
   sudo mv /tmp/workdir/zellij /usr/local/bin/
@@ -87,7 +87,7 @@ if ! command -v eza >/dev/null 2>&1; then
   sudo mkdir -p /tmp/workdir
   EZA_VERSION=$(get_latest_version "https://api.github.com/repos/eza-community/eza/releases/latest")
   if [ "$(uname)" = 'Linux' ]; then
-    sudo curl -Lof /tmp/workdir/eza.tar.gz "https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz"
+    sudo curl -L -o -f /tmp/workdir/eza.tar.gz "https://github.com/eza-community/eza/releases/download/v${EZA_VERSION}/eza_x86_64-unknown-linux-musl.tar.gz"
   fi
   sudo tar -xzf /tmp/workdir/eza.tar.gz -C /tmp/workdir
   sudo mv /tmp/workdir/eza /usr/local/bin/eza
