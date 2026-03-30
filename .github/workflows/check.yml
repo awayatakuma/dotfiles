@@ -6,8 +6,10 @@ jobs:
   ubuntu:
     runs-on: ubuntu-latest
     container: ubuntu:latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Install required packages
         run: |
           ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime 
@@ -18,8 +20,9 @@ jobs:
     runs-on: macos-latest
     env:
       GIT_TERMINAL_PROMPT: 0
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           persist-credentials: false
       - name: macos-install
