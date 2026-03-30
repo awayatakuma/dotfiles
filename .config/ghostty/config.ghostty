@@ -1,4 +1,3 @@
 macos-option-as-alt = left
 font-family = "UDEV Gothic JPDOC"
 background-opacity = 0.95
-keybind = ctrl+b_s=toggle_pane_synchronization
