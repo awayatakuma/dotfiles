@@ -1,41 +1,11 @@
 #!/usr/bin/env bash
 set -eux
 
-# Homebrew packages for macOS
-packages=(
-    # Modern CLI tools
-    bat
-    eza
-    fd
-    ripgrep
-    fzf
-    
-    # Development tools
-    git
-    curl
-    wget
-    
-    # Shell enhancements
-    zsh
-    
-    # Optional modern tools
-    neofetch
-    
-    # Language tools (if needed)
-    # nodejs
-    # python
-    # rust
-    # go
-)
+BREW_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
 
-echo "Installing Homebrew packages..."
-for package in "${packages[@]}"; do
-    if brew list "$package" &>/dev/null; then
-        echo "$package is already installed"
-    else
-        echo "Installing $package..."
-        brew install "$package"
-    fi
-done
+if ! command -v brew &> /dev/null; then
+    echo "Homebrew is not installed. Please install it first."
+    exit 1
+fi
 
-echo "Homebrew package installation completed"
+brew bundle install --file="$BREW_FILE"
