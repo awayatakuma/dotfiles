@@ -1,17 +1,14 @@
 # dotfiles
 
-Managed by **mise**, **Homebrew**, and **apt**.
-
-## 🎨 Fonts
-
-- **UDEV Gothic JPDOC**: Primary font used across the environment.
-  - [Download (GitHub: yuru7/udev-gothic)](https://github.com/yuru7/udev-gothic)
-
 ## 🚀 Quick Start
 
 ```sh
 curl -L https://raw.githubusercontent.com/awayatakuma/dotfiles/main/install.sh | sh
 ```
+## 🎨 Fonts
+
+- **UDEV Gothic JPDOC**: Primary font used across the environment.
+  - [Download (GitHub: yuru7/udev-gothic)](https://github.com/yuru7/udev-gothic)
 
 ## 🧪 Local Testing
 

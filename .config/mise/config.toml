@@ -9,3 +9,6 @@ lazygit = "latest"
 lazydocker = "latest"
 zellij = "latest"
 usage = "latest"
+
+[settings]
+lockfile = true
