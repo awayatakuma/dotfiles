@@ -14,7 +14,8 @@ else
     MISE_BIN="mise"
 fi
 
-"$MISE_BIN" install -g
+"$MISE_BIN" trust
+"$MISE_BIN" install
 
 if [ ! -d "$XDG_DATA_HOME/zeno" ]; then
     git clone https://github.com/yuki-yano/zeno.zsh.git "$XDG_DATA_HOME/zeno"

@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 set -eux
+source "$(dirname "$0")/envs.bash"
 
-APT_LIST="${XDG_CONFIG_HOME}/apt/Aptfile"
+APT_LIST="${REPO_DIR}/.config/apt/Aptfile"
 
 # 1. Prepare Repositories (PPA & Docker)
 apt-get update
 apt-get install -y software-properties-common curl ca-certificates
 
+add-apt-repository -y ppa:zhangsongcui3371/fastfetch
 add-apt-repository -y ppa:git-core/ppa
 add-apt-repository -y ppa:longsleep/golang-backports
 
@@ -26,4 +28,4 @@ apt-get upgrade -y
 xargs -a "$APT_LIST" apt-get install -y
 
 # 4. Cleanup
-apt remove neovim -y
+apt-get remove neovim -y
