@@ -18,6 +18,3 @@ brew "tmux"
 brew "vim"
 brew "wget"
 brew "zsh"
-
-# Fonts
-cask "font-udev-gothic-jpdoc"
