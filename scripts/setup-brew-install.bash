@@ -19,8 +19,6 @@ packages=(
     zsh
     
     # Optional modern tools
-    lazygit
-    zellij
     neofetch
     
     # Language tools (if needed)

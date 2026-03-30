@@ -13,5 +13,4 @@ else
     exit 1
 fi
 /bin/bash "$CUR_DIR/setup-links.bash"
-/bin/bash "$CUR_DIR/setup-langs.bash"
-/bin/bash "$CUR_DIR/setup-manual-install.bash"
+/bin/bash "$CUR_DIR/setup-tools.bash"
