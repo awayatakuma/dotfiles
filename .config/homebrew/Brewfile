@@ -1,6 +1,5 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
-tap "yuru7/tap"
 
 # CLI Tools
 brew "autoconf"

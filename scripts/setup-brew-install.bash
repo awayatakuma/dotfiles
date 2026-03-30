@@ -9,4 +9,5 @@ if ! command -v brew &> /dev/null; then
     exit 1
 fi
 
+tap "yuru7/tap"
 brew bundle install --file="$BREW_FILE"
