@@ -104,7 +104,7 @@
     ]
   },
   "workbench.iconTheme": "Monokai Pro (Filter Spectrum) Icons",
-  "editor.fontFamily": "'Fira Code',  HackGen Console NF,  'Courier New', monospace",
+  "editor.fontFamily": "UDEV Gothic JPDOC,  HackGen Console NF,  'Courier New', monospace",
   "hediet.vscode-drawio.resizeImages": null,
  
 }
