@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -eux
+source "$(dirname "$0")/envs.bash"
 
-BREW_FILE="$XDG_CONFIG_HOME/homebrew/Brewfile"
+BREW_FILE="${REPO_DIR}/.config/homebrew/Brewfile"
 
 if ! command -v brew &> /dev/null; then
     echo "Homebrew is not installed. Please install it first."
