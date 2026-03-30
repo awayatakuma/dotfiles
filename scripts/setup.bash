@@ -6,6 +6,7 @@ mkdir -p ${XDG_CONFIG_HOME} ${XDG_DATA_HOME} ${XDG_STATE_HOME}
 
 if [[ "$OSTYPE" == "linux-gnu"* ]] && command -v apt &> /dev/null; then
     sudo /bin/bash "$CUR_DIR/setup-apt-install.bash"
+    /bin/bash "$CUR_DIR/setup-fonts.bash"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     /bin/bash "$CUR_DIR/setup-brew-install.bash"
 else
