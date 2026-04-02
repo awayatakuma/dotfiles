@@ -1,5 +1,5 @@
 zmodule environment
-zmodule git
+# zmodule git
 zmodule git-info
 zmodule input
 zmodule termtitle

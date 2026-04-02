@@ -2,6 +2,34 @@
 ##          Aliases                                           ##
 #==============================================================#
 
+# --- GNU (on macOS) ---
+# Replace BSD commands with GNU versions
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # coreutils & findutils equivalents
+    (( ${+commands[gdate]} ))    && alias date='gdate'
+    (( ${+commands[gmkdir]} ))   && alias mkdir='gmkdir'
+    (( ${+commands[gcp]} ))      && alias cp='gcp -i'
+    (( ${+commands[gmv]} ))      && alias mv='gmv -i'
+    (( ${+commands[grm]} ))      && alias rm='grm -i'
+    (( ${+commands[gdu]} ))      && alias du='gdu'
+    (( ${+commands[ghead]} ))    && alias head='ghead'
+    (( ${+commands[gtail]} ))    && alias tail='gtail'
+    (( ${+commands[gdirname]} )) && alias dirname='gdirname'
+    (( ${+commands[gsed]} ))     && alias sed='gsed'
+    (( ${+commands[ggrep]} ))    && alias grep='ggrep --color=auto'
+    (( ${+commands[gfind]} ))    && alias find='gfind'
+    (( ${+commands[gxargs]} ))   && alias xargs='gxargs'
+    (( ${+commands[gawk]} ))     && alias awk='gawk'
+    (( ${+commands[gtar]} ))     && alias tar='gtar'
+
+    # ls configuration (fallback if eza is not used)
+    if (( ${+commands[gls]} )); then
+        alias ls='gls --color=auto --group-directories-first'
+    else
+        alias ls='ls -G'
+    fi
+fi
+
 # --- LS (eza) ---
 if (( ${+commands[eza]} )); then
     alias ls='eza --icons --group-directories-first'
@@ -9,11 +37,6 @@ if (( ${+commands[eza]} )); then
     alias ll='eza -l --icons --git --group-directories-first'
     alias lla='eza -la --icons --git --group-directories-first'
     alias tree='eza --tree --icons'
-else
-    alias la='ls -aF --color=auto'
-    alias lla='ls -alF --color=auto'
-    alias ls='ls --color=auto'
-    alias ll='ls -l --color=auto'
 fi
 
 # --- CAT (bat) ---
@@ -29,7 +52,6 @@ if (( ${+commands[zoxide]} )); then
 fi
 
 # --- Find/Search (fd/ripgrep) ---
-# Note: Debian/Ubuntu specific naming handling for fd is kept for compatibility
 if (( ${+commands[fdfind]} )); then
     alias fd='fdfind'
 fi
