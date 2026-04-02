@@ -2,39 +2,44 @@
 ##          Aliases                                           ##
 #==============================================================#
 
-# ls
-alias la='ls -aF --color=auto'
-alias lla='ls -alF --color=auto'
-alias ls='ls --color=auto'
-alias ll='ls -l --color=auto'
-
-# eza
+# --- LS (eza) ---
 if (( ${+commands[eza]} )); then
-    alias es='eza --color --group-directories-first'
-    alias ea='eza --color --group-directories-first -a'
-    alias eea='eza --color --group-directories-first -alF --header --color-scale --git --icons --time-style=long-iso'
-    alias ee='eza --color --group-directories-first -lF --header --color-scale --git --icons --time-style=long-iso'
-    alias tree='eza --color --group-directories-first --tree --icons'
+    alias ls='eza --icons --group-directories-first'
+    alias la='eza -a --icons --group-directories-first'
+    alias ll='eza -l --icons --git --group-directories-first'
+    alias lla='eza -la --icons --git --group-directories-first'
+    alias tree='eza --tree --icons'
+else
+    alias la='ls -aF --color=auto'
+    alias lla='ls -alF --color=auto'
+    alias ls='ls --color=auto'
+    alias ll='ls -l --color=auto'
 fi
 
-# Modern CLI tool aliases (Debian/Ubuntu naming compatibility)
-if (( ${+commands[batcat]} )); then
-    alias bat='batcat'
+# --- CAT (bat) ---
+if (( ${+commands[bat]} )); then
+    alias cat='bat -pp --paging=never'
+    alias b='bat'
 fi
 
+# --- CD (zoxide) ---
+if (( ${+commands[zoxide]} )); then
+    alias cd='z'
+    alias cdi='zi' # interactive selection
+fi
+
+# --- Find/Search (fd/ripgrep) ---
+# Note: Debian/Ubuntu specific naming handling for fd is kept for compatibility
 if (( ${+commands[fdfind]} )); then
     alias fd='fdfind'
 fi
 
-# ripgrep available as rg (don't replace grep to avoid compatibility issues)
-
-# others
+# --- OS Specific ---
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias pp='pbcopy'
 elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
   alias pp='xsel --clipboard --input'
 fi
+
+# --- Shell Management ---
 alias reload='exec $SHELL -l'
-alias v='nvim'
-alias zl='zellij'
-alias lg='lazygit'
